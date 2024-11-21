@@ -31,6 +31,7 @@ public class MjpegStreamController {
 
         System.out.println("MjpegStreamController.streamVideo");
         URL url = new URL(MJPEG_STREAM_URL);
+        System.out.println("URL: ",MJPEG_STREAM_URL);
         URLConnection connection = url.openConnection();
         InputStream inputStream = connection.getInputStream();
 
