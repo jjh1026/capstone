@@ -20,7 +20,7 @@ public class MjpegStreamController {
     // 환영 메시지와 비디오 스트리밍을 포함한 HTML 페이지 제공
     @GetMapping("/")
     public String welcomePage(@RequestParam("jetsonIp") String jetsonIp) {
-        MJPEG_STREAM_URL = "http://" + jetsonIp + ":5000/video_feed";;
+        MJPEG_STREAM_URL = "http://" + jetsonIp + ":5001/video_feed";;
         return "index";  // templates/index.html 페이지 반환
     }
 
