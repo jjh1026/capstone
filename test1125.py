@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # 비디오 파일 경로 설정 (test_video.mp4 또는 다른 비디오 파일 경로)
 video_source = 'test_video.mp4'  # 비디오 파일 경로
-CORS(app)
+CORS(app, origins="http://ec2-13-209-45-118.ap-northeast-2.compute.amazonaws.com:8080", supports_credentials=True)
 def event_stream():
     while True:
         # 임의의 값으로 v1, v2 설정 (예시)
@@ -59,6 +59,7 @@ def update_actuator():
     # CORS preflight 요청 처리
     if request.method == 'OPTIONS':
         response = Response()
+        response.headers['Access-Control-Allow-Origin'] = 'http://ec2-13-209-45-118.ap-northeast-2.compute.amazonaws.com:8080'
         response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'  # 허용할 메서드
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type'  # 허용할 헤더
         response.headers['Access-Control-Allow-Credentials'] = 'true'  # 쿠키 포함 허용
@@ -84,6 +85,7 @@ def update_threshold():
         # CORS preflight 요청 처리
         response = Response()
         # CORS 관련 헤더 추가
+        response.headers['Access-Control-Allow-Origin'] = 'http://ec2-13-209-45-118.ap-northeast-2.compute.amazonaws.com:8080'
         response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'  # 허용할 메서드
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type'  # 허용할 헤더
         response.headers['Access-Control-Allow-Credentials'] = 'true'  # 쿠키 포함 허용
